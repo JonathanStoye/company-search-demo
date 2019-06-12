@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import { Companies } from './companies/Companies'
+import { Companies } from './Companies'
 
 const App = () => (
   <Container maxWidth="lg">

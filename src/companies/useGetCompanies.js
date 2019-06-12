@@ -8,10 +8,14 @@ export const useGetCompanies = ({ searchTerm, categories }) => {
     const fetchCompanies = async () => {
       try {
         const { data } = await getCompanies()
+        // Bypass the algorithm if no search present
         if (!searchTerm && categories.size === 0) {
           setCompanies(data)
           return undefined
         }
+        // Weighted algorithm which adds 1 for each hit of the search term
+        // As well as category matches. Shows only dates with matches > 0
+        // and the data is sorted by matches descending
         const searchTermRegex = new RegExp(searchTerm, 'gi')
         const ratedData = data.map(date => {
           let rating = 0
